@@ -1,0 +1,82 @@
+{
+  "golfers": {
+    "119947": {
+      "country": "USA",
+      "id": 119947,
+      "name": "Max Homa"
+    },
+    "96433": {
+      "country": "ENG",
+      "id": 96433,
+      "name": "Danny Willett"
+    },
+    "167383": {
+      "country": "USA",
+      "id": 167383,
+      "name": "Taylor Montgomery"
+    },
+    "101860": {
+      "country": "KOR",
+      "id": 101860,
+      "name": "Byeong Hun An"
+    },
+    "120502": {
+      "country": "USA",
+      "id": 120502,
+      "name": "Justin Lower"
+    },
+    "76495": {
+      "country": "CAN",
+      "id": 76495,
+      "name": "Nick Taylor"
+    },
+    "96322": {
+      "country": "USA",
+      "id": 96322,
+      "name": "Rickie Fowler"
+    },
+    "154918": {
+      "country": "USA",
+      "id": 154918,
+      "name": "Sahith Theegala"
+    },
+    "92797": {
+      "country": "USA",
+      "id": 92797,
+      "name": "Brendon Todd"
+    },
+    "102313": {
+      "country": "USA",
+      "id": 102313,
+      "name": "Harris English"
+    },
+    "174520": {
+      "country": "USA",
+      "id": 174520,
+      "name": "Davis Thompson"
+    },
+    "100975": {
+      "country": "BEL",
+      "id": 100975,
+      "name": "Thomas Detry"
+    }
+  },
+  "participants": [
+    {
+      "name": "Participant 1",
+      "selectedGolfers": []
+    },
+    {
+      "name": "Participant 2",
+      "selectedGolfers": []
+    },
+    {
+      "name": "Participant 3",
+      "selectedGolfers": []
+    },
+    {
+      "name": "Participant 4",
+      "selectedGolfers": []
+    }
+  ]
+}
