@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Player Birdies and Eagles</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div id="player-stats"></div>
+
+  <script>
+    async function fetchData() {
+      const url = 'https://golf-leaderboard-data.p.rapidapi.com/scorecard/220/101017';
+      const options = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': '5bafd4ae9fmsh7104b6d78f98516p1b2e71jsn9b72b95b1cfc',
+          'X-RapidAPI-Host': 'golf-leaderboard-data.p.rapidapi.com'
+        }
+      };
+
+      try {
+        const response = await fetch(url, options);
+        const result = await response.json();
+        return result;
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    function calculateBirdiesAndEagles(scorecard, courses) {
+      return scorecard.map((round, roundIndex) => {
+        const roundCourses = courses[roundIndex].courses;
+        let birdies = 0;
+        let eagles = 0;
+
+        round.holes.forEach((hole, holeIndex) => {
+          const holePar = parseInt(roundCourses[0].holes[holeIndex].par);
+          const holeScore = parseInt(hole.score);
+
+          if (holePar - holeScore === 1) {
+            birdies++;
+          } else if (holePar - holeScore === 2) {
+            eagles++;
+          }
+        });
+
+        return {birdies, eagles};
+      });
+    }
+
+    function displayPlayerStats(player, birdiesAndEagles) {
+      const playerDiv = document.getElementById('player-stats');
+      playerDiv.innerHTML = `
+        <h1>${player.name}</h1>
+        ${birdiesAndEagles.map((stats, i) => `
+          <h3>Round ${i + 1}</h3>
+          <p>Birdies: ${stats.birdies}</p>
+          <p>Eagles: ${stats.eagles}</p>
+        `).join('')}
+      `;
+    }
+
+    async function fetchLeaderboardData() {
+      const data = await fetchData();
+
+      const player = data.results.player;
+      const scorecard = data.results.scorecard;
+      const courses = data.results.rounds_holes_breakdown.rounds;
+      const birdiesAndEagles = calculateBirdiesAndEagles(scorecard, courses);
+      
+      displayPlayerStats(player, birdiesAndEagles);
+    }
+
+    fetchLeaderboardData();
+  </script>
+</body>
+</html>
